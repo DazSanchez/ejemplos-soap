@@ -1,0 +1,207 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wsdl:definitions
+    name="ServicioEstudiantes"
+    targetNamespace="http://www.itorizaba.com/ServicioEstudiantes.wsdl"
+    xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/"
+    xmlns:tns="http://www.itorizaba.com/ServicioEstudiantes.wsdl"
+    xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/"
+    xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+    xmlns:xsd1="http://www.your-company.com/ServicioEstudiantes.xsd1"
+    xmlns:xsd2="http://www.itorizaba.com/ServicioEstudiantes.xsd2"
+    xmlns:xsd3="http://www.itorizaba.com/ServicioEstudiantes.xsd3">
+    <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Created using Cape Clear Studio SOA Editor - http://www.capeclear.com</wsdl:documentation>
+    <wsdl:types>
+        <xsd:schema
+            targetNamespace="http://www.itorizaba.com/ServicioEstudiantes.xsd3"
+            xmlns:SOAP-ENC="http://schemas.xmlsoap.org/soap/encoding/"
+            xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/"
+            xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+            xmlns:xsd3="http://www.itorizaba.com/ServicioEstudiantes.xsd3">
+            <xsd:import namespace="http://schemas.xmlsoap.org/wsdl/"/>
+            <xsd:import namespace="http://schemas.xmlsoap.org/soap/encoding/"/>
+            <xsd:complexType name="ListaAlumno">
+                <xsd:sequence>
+                    <xsd:element maxOccurs="unbounded" minOccurs="0" name="item" type="xsd3:Alumno"/>
+                </xsd:sequence>
+            </xsd:complexType>
+            <xsd:complexType name="Alumno">
+                <xsd:sequence>
+                    <xsd:element maxOccurs="1" minOccurs="1" name="numControl" type="xsd:string"/>
+                    <xsd:element maxOccurs="1" minOccurs="1" name="nombre" type="xsd:string"/>
+                    <xsd:element maxOccurs="1" minOccurs="1" name="carrera" type="xsd:string"/>
+                    <xsd:element maxOccurs="1" minOccurs="1" name="promedio" type="xsd:double"/>
+                    <xsd:element maxOccurs="1" minOccurs="1" name="semestre" type="xsd:int"/>
+                    <xsd:element maxOccurs="1" minOccurs="1" name="direccion" type="xsd:string"/>
+                    <xsd:element maxOccurs="1" minOccurs="1" name="edad" type="xsd:int"/>
+                    <xsd:element maxOccurs="1" minOccurs="1" name="telefono" type="xsd:string"/>
+                    <xsd:element maxOccurs="1" minOccurs="1" name="email" type="xsd:string"/>
+                </xsd:sequence>
+            </xsd:complexType>
+            <xsd:complexType name="ErrorPeticion">
+                <xsd:sequence>
+                    <xsd:element maxOccurs="1" minOccurs="0" name="hayError" type="xsd:boolean"/>
+                    <xsd:element maxOccurs="1" minOccurs="0" name="mensaje" type="xsd:string"/>
+                </xsd:sequence>
+            </xsd:complexType>
+        </xsd:schema>
+    </wsdl:types>
+    <wsdl:message name="BusquedaPromedioRequest">
+        <wsdl:part name="promedio" type="xsd:double"/>
+    </wsdl:message>
+    <wsdl:message name="DetalleAlumnoResponse">
+        <wsdl:part name="alumno" type="xsd3:Alumno"/>
+        <wsdl:part name="error" type="xsd3:ErrorPeticion"/>
+    </wsdl:message>
+    <wsdl:message name="ListadoAlumnosResponse">
+        <wsdl:part name="alumnos" type="xsd3:ListaAlumno"/>
+        <wsdl:part name="error" type="xsd3:ErrorPeticion"/>
+    </wsdl:message>
+    <wsdl:message name="BusquedaCarreraRequest">
+        <wsdl:part name="carrera" type="xsd:string"/>
+    </wsdl:message>
+    <wsdl:message name="BusquedaRangoEdadRequest">
+        <wsdl:part name="min" type="xsd:int"/>
+        <wsdl:part name="max" type="xsd:int"/>
+    </wsdl:message>
+    <wsdl:message name="SinParametrosRequest">   </wsdl:message>
+    <wsdl:message name="EstaInscritoResponse">
+        <wsdl:part name="estaInscrito" type="xsd:boolean"/>
+        <wsdl:part name="error" type="xsd3:ErrorPeticion"/>
+    </wsdl:message>
+    <wsdl:message name="DarBajaResponse">
+        <wsdl:part name="exito" type="xsd:boolean"/>
+        <wsdl:part name="error" type="xsd3:ErrorPeticion"/>
+    </wsdl:message>
+    <wsdl:message name="BusquedaSemestreRequest">
+        <wsdl:part name="semestre" type="xsd:int"/>
+    </wsdl:message>
+    <wsdl:message name="BusquedaNumControlRequest">
+        <wsdl:part name="numControl" type="xsd:string"/>
+    </wsdl:message>
+    <wsdl:portType name="ServicioEstudiantesPortType">
+        <wsdl:operation name="EstaInscrito">
+            <wsdl:input message="tns:BusquedaNumControlRequest"/>
+            <wsdl:output message="tns:EstaInscritoResponse"/>
+        </wsdl:operation>
+        <wsdl:operation name="ObtenerDetalles">
+            <wsdl:input message="tns:BusquedaNumControlRequest"/>
+            <wsdl:output message="tns:DetalleAlumnoResponse"/>
+        </wsdl:operation>
+        <wsdl:operation name="AlumnosInscritos">
+            <wsdl:input message="tns:SinParametrosRequest"/>
+            <wsdl:output message="tns:ListadoAlumnosResponse"/>
+        </wsdl:operation>
+        <wsdl:operation name="AlumnosInscritosPorCarrera">
+            <wsdl:input message="tns:BusquedaCarreraRequest"/>
+            <wsdl:output message="tns:ListadoAlumnosResponse"/>
+        </wsdl:operation>
+        <wsdl:operation name="DarBaja">
+            <wsdl:input message="tns:BusquedaNumControlRequest"/>
+            <wsdl:output message="tns:DarBajaResponse"/>
+        </wsdl:operation>
+        <wsdl:operation name="AlumnosInscritosPorSemestre">
+            <wsdl:input message="tns:BusquedaSemestreRequest"/>
+            <wsdl:output message="tns:ListadoAlumnosResponse"/>
+        </wsdl:operation>
+        <wsdl:operation name="AlumnosInscritosPorPromedio">
+            <wsdl:input message="tns:BusquedaPromedioRequest"/>
+            <wsdl:output message="tns:ListadoAlumnosResponse"/>
+        </wsdl:operation>
+        <wsdl:operation name="AlumnosInscritosPorRangoEdad">
+            <wsdl:input message="tns:BusquedaRangoEdadRequest"/>
+            <wsdl:output message="tns:ListadoAlumnosResponse"/>
+        </wsdl:operation>
+    </wsdl:portType>
+    <wsdl:binding
+        name="ServicioEstudiantesBinding"
+        type="tns:ServicioEstudiantesPortType">
+        <soap:binding style="rpc" transport="http://schemas.xmlsoap.org/soap/http"/>
+        <wsdl:operation name="EstaInscrito">
+            <soap:operation
+                soapAction="capeconnect:ServicioEstudiantes:ServicioEstudiantesPortType#EstaInscrito"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="ObtenerDetalles">
+            <soap:operation
+                soapAction="capeconnect:ServicioEstudiantes:ServicioEstudiantesPortType#ObtenerDetalles"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="AlumnosInscritos">
+            <soap:operation
+                soapAction="capeconnect:ServicioEstudiantes:ServicioEstudiantesPortType#AlumnosInscritos"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="AlumnosInscritosPorCarrera">
+            <soap:operation
+                soapAction="capeconnect:ServicioEstudiantes:ServicioEstudiantesPortType#AlumnosInscritosPorCarrera"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="DarBaja">
+            <soap:operation
+                soapAction="capeconnect:ServicioEstudiantes:ServicioEstudiantesPortType#DarBaja"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="AlumnosInscritosPorSemestre">
+            <soap:operation
+                soapAction="capeconnect:ServicioEstudiantes:ServicioEstudiantesPortType#AlumnosInscritosPorSemestre"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="AlumnosInscritosPorPromedio">
+            <soap:operation
+                soapAction="capeconnect:ServicioEstudiantes:ServicioEstudiantesPortType#AlumnosInscritosPorPromedio"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="AlumnosInscritosPorRangoEdad">
+            <soap:operation
+                soapAction="capeconnect:ServicioEstudiantes:ServicioEstudiantesPortType#AlumnosInscritosPorRangoEdad"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+    </wsdl:binding>
+    <wsdl:service name="ServicioEstudiantes">
+        <wsdl:port
+            binding="tns:ServicioEstudiantesBinding"
+            name="ServicioEstudiantesPort">
+            <soap:address location="http://localhost:8000/ccx/ServicioEstudiantes"/>
+        </wsdl:port>
+    </wsdl:service>
+</wsdl:definitions>

@@ -17,5 +17,6 @@ Any value defined here will override the pom.xml file value but is only applicab
         <org-netbeans-modules-maven-j2ee.netbeans_2e_hint_2e_deploy_2e_server>gfv3ee6</org-netbeans-modules-maven-j2ee.netbeans_2e_hint_2e_deploy_2e_server>
         <org-netbeans-modules-maven-jaxws._5f_S_5f_ServicioCalculadora>file:/C:/hsanchez/arq-sw/servicios-wsdl/ServicioCalculadora.wsdl</org-netbeans-modules-maven-jaxws._5f_S_5f_ServicioCalculadora>
         <org-netbeans-modules-maven-jaxws._5f_C_5f_ServicioCalculadora_5f_1>http://localhost:8080/AppServiciosSOAP/ServicioCalculadora?wsdl</org-netbeans-modules-maven-jaxws._5f_C_5f_ServicioCalculadora_5f_1>
+        <org-netbeans-modules-maven-jaxws._5f_C_5f_ServicioEstudiantes_5f_1>http://localhost:8080/AppServiciosSOAP/ServicioEstudiantes?wsdl</org-netbeans-modules-maven-jaxws._5f_C_5f_ServicioEstudiantes_5f_1>
     </properties>
 </project-shared-configuration>

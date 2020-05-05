@@ -2,4 +2,6 @@
 <catalog xmlns="urn:oasis:names:tc:entity:xmlns:xml:catalog" prefer="system">
     <system systemId="file:/C:/hsanchez/arq-sw/servicios-wsdl/ServicioCalculadora.wsdl" uri="wsdl/ServicioCalculadora.wsdl"/>
     <system systemId="http://localhost:8080/AppServiciosSOAP/ServicioCalculadora?wsdl" uri="wsdl/localhost_8080/AppServiciosSOAP/ServicioCalculadora.wsdl"/>
+    <system systemId="http://localhost:8080/AppServiciosSOAP/ServicioEstudiantes?wsdl" uri="wsdl/localhost_8080/AppServiciosSOAP/ServicioEstudiantes.wsdl"/>
+    <system systemId="file:/C:/hsanchez/arq-sw/servicios-wsdl/ServicioEstudiantes.wsdl" uri="wsdl/ServicioEstudiantes.wsdl"/>
 </catalog>

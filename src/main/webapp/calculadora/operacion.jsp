@@ -18,7 +18,7 @@
                 </div>
             </c:if>
 
-            <form method="POST" class="form-inline">
+            <form method="POST" class="form-inline py-2">
                 <input type="number" name="a" class="form-control mr-2" value="${a}" required="required" />
                 
                 <select class="form-control mr-2" name="op">
@@ -36,6 +36,8 @@
 
                 <button type="submit" class="btn btn-primary">Calcular</button>
             </form>
+                
+            <a href='<c:url value="/" />'>Volver al menú</a>
         </div>
     </div>
 </t:layout>
