@@ -4,4 +4,8 @@
     <system systemId="http://localhost:8080/AppServiciosSOAP/ServicioCalculadora?wsdl" uri="wsdl/localhost_8080/AppServiciosSOAP/ServicioCalculadora.wsdl"/>
     <system systemId="http://localhost:8080/AppServiciosSOAP/ServicioEstudiantes?wsdl" uri="wsdl/localhost_8080/AppServiciosSOAP/ServicioEstudiantes.wsdl"/>
     <system systemId="file:/C:/hsanchez/arq-sw/servicios-wsdl/ServicioEstudiantes.wsdl" uri="wsdl/ServicioEstudiantes.wsdl"/>
+    <system systemId="file:/C:/hsanchez/arq-sw/servicios-wsdl/ServiciosRestaurante.wsdl" uri="wsdl/ServiciosRestaurante.wsdl"/>
+    <system systemId="http://localhost:8080/AppServiciosSOAP/ServiciosRestaurante?wsdl" uri="wsdl/localhost_8080/AppServiciosSOAP/ServiciosRestaurante.wsdl"/>
+    <system systemId="file:/C:/hsanchez/arq-sw/servicios-wsdl/ServiciosTienda.wsdl" uri="wsdl/ServiciosTienda.wsdl"/>
+    <system systemId="http://localhost:8080/AppServiciosSOAP/ServiciosTienda?wsdl" uri="wsdl/localhost_8080/AppServiciosSOAP/ServiciosTienda.wsdl"/>
 </catalog>

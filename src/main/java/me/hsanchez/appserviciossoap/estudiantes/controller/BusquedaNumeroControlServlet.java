@@ -44,7 +44,8 @@ public class BusquedaNumeroControlServlet extends HttpServlet {
             port.obtenerDetalles(q, alumno, error);
 
             if (error.value.isHayError()) {
-                req.setAttribute("error", error.value);
+                Exception e = new Exception(error.value.getMensaje());
+            req.setAttribute("error", e);
             } else {
                 req.setAttribute("alumno", alumno.value);
                 req.setAttribute("exito", true);

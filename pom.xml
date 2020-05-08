@@ -155,6 +155,74 @@
                         <id>wsimport-generate-ServicioEstudiantes</id>
                         <phase>generate-sources</phase>
                     </execution>
+                    <execution>
+                        <goals>
+                            <goal>wsimport</goal>
+                        </goals>
+                        <configuration>
+                            <wsdlFiles>
+                                <wsdlFile>ServiciosRestaurante.wsdl</wsdlFile>
+                            </wsdlFiles>
+                            <vmArgs>
+                                <vmArg>-Djavax.xml.accessExternalSchema=all</vmArg>
+                            </vmArgs>
+                            <staleFile>${project.build.directory}/jaxws/stale/ServiciosRestaurante.stale</staleFile>
+                        </configuration>
+                        <id>wsimport-generate-ServiciosRestaurante</id>
+                        <phase>generate-sources</phase>
+                    </execution>
+                    <execution>
+                        <goals>
+                            <goal>wsimport</goal>
+                        </goals>
+                        <configuration>
+                            <wsdlFiles>
+                                <wsdlFile>localhost_8080/AppServiciosSOAP/ServiciosRestaurante.wsdl</wsdlFile>
+                            </wsdlFiles>
+                            <packageName>me.hsanchez.appserviciossoap.client.restaurante</packageName>
+                            <vmArgs>
+                                <vmArg>-Djavax.xml.accessExternalSchema=all</vmArg>
+                            </vmArgs>
+                            <wsdlLocation>http://localhost:8080/AppServiciosSOAP/ServiciosRestaurante?wsdl</wsdlLocation>
+                            <staleFile>${project.build.directory}/jaxws/stale/ServiciosRestaurante_1.stale</staleFile>
+                        </configuration>
+                        <id>wsimport-generate-ServiciosRestaurante_1</id>
+                        <phase>generate-sources</phase>
+                    </execution>
+                    <execution>
+                        <goals>
+                            <goal>wsimport</goal>
+                        </goals>
+                        <configuration>
+                            <wsdlFiles>
+                                <wsdlFile>ServiciosTienda.wsdl</wsdlFile>
+                            </wsdlFiles>
+                            <vmArgs>
+                                <vmArg>-Djavax.xml.accessExternalSchema=all</vmArg>
+                            </vmArgs>
+                            <staleFile>${project.build.directory}/jaxws/stale/ServiciosTienda.stale</staleFile>
+                        </configuration>
+                        <id>wsimport-generate-ServiciosTienda</id>
+                        <phase>generate-sources</phase>
+                    </execution>
+                    <execution>
+                        <goals>
+                            <goal>wsimport</goal>
+                        </goals>
+                        <configuration>
+                            <wsdlFiles>
+                                <wsdlFile>localhost_8080/AppServiciosSOAP/ServiciosTienda.wsdl</wsdlFile>
+                            </wsdlFiles>
+                            <packageName>me.hsanchez.appserviciossoap.client.tienda</packageName>
+                            <vmArgs>
+                                <vmArg>-Djavax.xml.accessExternalSchema=all</vmArg>
+                            </vmArgs>
+                            <wsdlLocation>http://localhost:8080/AppServiciosSOAP/ServiciosTienda?wsdl</wsdlLocation>
+                            <staleFile>${project.build.directory}/jaxws/stale/ServiciosTienda_1.stale</staleFile>
+                        </configuration>
+                        <id>wsimport-generate-ServiciosTienda_1</id>
+                        <phase>generate-sources</phase>
+                    </execution>
                 </executions>
                 <dependencies>
                     <dependency>

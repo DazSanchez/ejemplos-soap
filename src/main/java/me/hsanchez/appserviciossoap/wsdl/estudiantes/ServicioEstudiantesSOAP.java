@@ -47,13 +47,12 @@ public class ServicioEstudiantesSOAP {
         try {
             Alumno resultado = this.estudiantesService.buscarPorNumeroControl(numControl);
 
-            if (resultado != null) {
-                alumno.value = resultado;
-                ep.setHayError(false);
-                return;
+            if (resultado == null) {
+                throw new QueryExecutionException("No se encontró un alumno con el número de control: " + numControl);
             }
-
-            throw new QueryExecutionException("No se encontró un alumno con el número de control: " + numControl);
+            
+            alumno.value = resultado;
+            ep.setHayError(false);
         } catch (QueryExecutionException ex) {
             alumno.value = new Alumno();
             ep.setHayError(true);

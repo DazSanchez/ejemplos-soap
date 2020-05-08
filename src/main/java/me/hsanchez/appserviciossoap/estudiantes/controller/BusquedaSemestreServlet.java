@@ -45,7 +45,8 @@ public class BusquedaSemestreServlet extends HttpServlet {
                 port.alumnosInscritosPorSemestre(Integer.parseInt(q), alumnos, error);
 
                 if (error.value.isHayError()) {
-                    req.setAttribute("error", error.value);
+                    Exception e = new Exception(error.value.getMensaje());
+                    req.setAttribute("error", e);
                 } else {
                     List<Alumno> lista = alumnos.value.getItem();
 
@@ -59,7 +60,7 @@ public class BusquedaSemestreServlet extends HttpServlet {
                 req.setAttribute("error", ep);
             }
         }
-        
+
         req.setAttribute("q", q);
 
         this.renderPage(req, resp);

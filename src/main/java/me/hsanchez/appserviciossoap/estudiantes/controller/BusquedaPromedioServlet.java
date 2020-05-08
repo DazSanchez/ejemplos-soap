@@ -36,18 +36,19 @@ public class BusquedaPromedioServlet extends HttpServlet {
 
         req.setAttribute("termino", "promedio");
         req.setAttribute("ejemplo", "9.5");
-        
-        if(q != null) {
-            
+
+        if (q != null) {
+
             try {
                 ServicioEstudiantesPortType port = service.getServicioEstudiantesPort();
-                
+
                 Holder<ListaAlumno> alumnos = new Holder<>();
                 Holder<ErrorPeticion> error = new Holder<>();
                 port.alumnosInscritosPorPromedio(Double.parseDouble(q), alumnos, error);
-                
-                if(error.value.isHayError()) {
-                    req.setAttribute("error", error.value);
+
+                if (error.value.isHayError()) {
+                    Exception e = new Exception(error.value.getMensaje());
+                    req.setAttribute("error", e);
                 } else {
                     List<Alumno> lista = alumnos.value.getItem();
 
@@ -62,12 +63,12 @@ public class BusquedaPromedioServlet extends HttpServlet {
             }
 
         }
-        
+
         req.setAttribute("q", q);
-        
+
         this.renderPage(req, resp);
     }
-    
+
     private void renderPage(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
         request.getRequestDispatcher("/estudiantes/busqueda/listado-resultados.jsp").forward(request, response);
     }

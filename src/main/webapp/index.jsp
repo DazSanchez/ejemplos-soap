@@ -19,6 +19,12 @@
                 <a href='<c:url value="/estudiantes" />' class="list-group-item list-group-item-action text-primary">
                     Estudiantes
                 </a>
+                <a href='<c:url value="/restaurantes" />' class="list-group-item list-group-item-action text-primary">
+                    Restaurantes
+                </a>
+                <a href='<c:url value="/tienda" />' class="list-group-item list-group-item-action text-primary">
+                    Tienda
+                </a>
             </ul>
         </div>
     </div>

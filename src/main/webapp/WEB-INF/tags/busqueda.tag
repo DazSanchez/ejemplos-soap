@@ -9,7 +9,7 @@
 
 <%-- The list of normal or fragment attributes can be specified here: --%>
 <%@attribute name="exito" required="true" %>
-<%@attribute name="error" required="true" type="com.itorizaba.servicioestudiantes.ErrorPeticion" %>
+<%@attribute name="error" required="true" type="java.lang.Exception" %>
 <%@attribute name="placeholder" required="true" %>
 <%@attribute name="q" required="true" %>
 <%@attribute name="textoBoton" required="true" %>
@@ -28,6 +28,6 @@
 
 <c:if test="${error != null}">
     <div class="alert alert-danger">
-        ${error.mensaje}
+        ${error.message}
     </div>
 </c:if>

@@ -2,8 +2,6 @@ package me.hsanchez.appserviciossoap.estudiantes.dao;
 
 import java.sql.SQLException;
 import java.util.List;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import me.hsanchez.appserviciossoap.estudiantes.dao.queries.EstudiantesQueries;
 import me.hsanchez.appserviciossoap.estudiantes.datasource.EstudiantesDataSource;
 import me.hsanchez.appserviciossoap.estudiantes.dto.AlumnoDTO;

@@ -47,7 +47,8 @@ public class AlumnosInscritosServlet extends HttpServlet {
         port.alumnosInscritos(alumnos, error);
 
         if (error.value.isHayError()) {
-            req.setAttribute("error", error.value);
+            Exception e = new Exception(error.value.getMensaje());
+            req.setAttribute("error", e);
         } else {
             List<Alumno> lista = alumnos.value.getItem();
 

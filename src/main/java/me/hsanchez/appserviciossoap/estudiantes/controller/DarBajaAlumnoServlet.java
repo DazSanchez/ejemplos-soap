@@ -55,7 +55,8 @@ public class DarBajaAlumnoServlet extends HttpServlet {
             port.darBaja(q, exito, error);
 
             if (error.value.isHayError()) {
-                req.setAttribute("error", error.value);
+                Exception e = new Exception(error.value.getMensaje());
+                req.setAttribute("error", e);
             } else if (!exito.value) {
                 ErrorPeticion ep = new ErrorPeticion();
                 ep.setMensaje("No se encontró un alumno con número de control: " + q);

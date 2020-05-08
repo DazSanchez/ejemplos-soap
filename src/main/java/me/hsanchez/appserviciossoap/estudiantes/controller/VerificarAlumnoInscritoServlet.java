@@ -48,7 +48,8 @@ public class VerificarAlumnoInscritoServlet extends HttpServlet {
             port.estaInscrito(q, estaInscrito, error);
 
             if (error.value.isHayError()) {
-                req.setAttribute("error", error.value);
+                Exception e = new Exception(error.value.getMensaje());
+                req.setAttribute("error", e);
             } else {
                 req.setAttribute("estaInscrito", estaInscrito.value);
                 req.setAttribute("exito", true);

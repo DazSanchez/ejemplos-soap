@@ -18,5 +18,9 @@ Any value defined here will override the pom.xml file value but is only applicab
         <org-netbeans-modules-maven-jaxws._5f_S_5f_ServicioCalculadora>file:/C:/hsanchez/arq-sw/servicios-wsdl/ServicioCalculadora.wsdl</org-netbeans-modules-maven-jaxws._5f_S_5f_ServicioCalculadora>
         <org-netbeans-modules-maven-jaxws._5f_C_5f_ServicioCalculadora_5f_1>http://localhost:8080/AppServiciosSOAP/ServicioCalculadora?wsdl</org-netbeans-modules-maven-jaxws._5f_C_5f_ServicioCalculadora_5f_1>
         <org-netbeans-modules-maven-jaxws._5f_C_5f_ServicioEstudiantes_5f_1>http://localhost:8080/AppServiciosSOAP/ServicioEstudiantes?wsdl</org-netbeans-modules-maven-jaxws._5f_C_5f_ServicioEstudiantes_5f_1>
+        <org-netbeans-modules-maven-jaxws._5f_S_5f_ServiciosRestaurante>file:/C:/hsanchez/arq-sw/servicios-wsdl/ServiciosRestaurante.wsdl</org-netbeans-modules-maven-jaxws._5f_S_5f_ServiciosRestaurante>
+        <org-netbeans-modules-maven-jaxws._5f_C_5f_ServiciosRestaurante_5f_1>http://localhost:8080/AppServiciosSOAP/ServiciosRestaurante?wsdl</org-netbeans-modules-maven-jaxws._5f_C_5f_ServiciosRestaurante_5f_1>
+        <org-netbeans-modules-maven-jaxws._5f_S_5f_ServiciosTienda>file:/C:/hsanchez/arq-sw/servicios-wsdl/ServiciosTienda.wsdl</org-netbeans-modules-maven-jaxws._5f_S_5f_ServiciosTienda>
+        <org-netbeans-modules-maven-jaxws._5f_C_5f_ServiciosTienda_5f_1>http://localhost:8080/AppServiciosSOAP/ServiciosTienda?wsdl</org-netbeans-modules-maven-jaxws._5f_C_5f_ServiciosTienda_5f_1>
     </properties>
 </project-shared-configuration>

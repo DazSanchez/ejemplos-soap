@@ -55,7 +55,8 @@ public class BusquedaCarreraServlet extends HttpServlet {
             List<Alumno> lista = alumnos.value.getItem();
 
             if(error.value.isHayError()) {
-                req.setAttribute("error", error.value);
+                Exception e = new Exception(error.value.getMensaje());
+            req.setAttribute("error", e);
             } else {
                 req.setAttribute("alumnos", lista);
                 req.setAttribute("total", lista.size());

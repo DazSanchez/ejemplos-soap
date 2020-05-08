@@ -26,41 +26,41 @@ import javax.xml.ws.WebServiceRef;
  */
 @WebServlet(name = "BusquedaRangoEdadServlet", urlPatterns = {"/estudiantes/busqueda/edad"})
 public class BusquedaRangoEdadServlet extends HttpServlet {
-    
+
     @WebServiceRef(wsdlLocation = "WEB-INF/wsdl/ServicioEstudiantes.wsdl")
     private ServicioEstudiantes service;
-    
+
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         String min = req.getParameter("min");
         String max = req.getParameter("max");
-        
+
         req.setAttribute("termino", "rango de edad");
-        
+
         if (min != null && max != null) {
-            
+
             try { // Call Web Service Operation
                 ServicioEstudiantesPortType port = service.getServicioEstudiantesPort();
                 Holder<ListaAlumno> alumnos = new Holder<>();
                 Holder<ErrorPeticion> error = new Holder<>();
-                
+
                 int minInt = Integer.parseInt(min, 10);
                 int maxInt = Integer.parseInt(max, 10);
-                
-                if(minInt > maxInt) {
+
+                if (minInt > maxInt) {
                     int tmp = minInt;
                     minInt = maxInt;
                     maxInt = tmp;
                 }
-                
+
                 req.setAttribute("min", minInt);
                 req.setAttribute("max", maxInt);
-                
+
                 port.alumnosInscritosPorRangoEdad(minInt, maxInt, alumnos, error);
-                
-                
-                if(error.value.isHayError()) {
-                    req.setAttribute("error", error.value);
+
+                if (error.value.isHayError()) {
+                    Exception e = new Exception(error.value.getMensaje());
+                    req.setAttribute("error", e);
                 } else {
                     List<Alumno> lista = alumnos.value.getItem();
 
@@ -73,12 +73,12 @@ public class BusquedaRangoEdadServlet extends HttpServlet {
                 ep.setMensaje("El mínimo y máximo deben ser números");
                 req.setAttribute("error", ep);
             }
-            
+
         }
-        
+
         this.renderPage(req, resp);
     }
-    
+
     private void renderPage(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
         request.getRequestDispatcher("/estudiantes/busqueda/listado-resultados-rango.jsp").forward(request, response);
     }

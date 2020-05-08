@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wsdl:definitions
+    name="ServiciosRestaurante"
+    targetNamespace="http://www.itorizaba.com/ServiciosRestaurante.wsdl"
+    xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/"
+    xmlns:tns="http://www.itorizaba.com/ServiciosRestaurante.wsdl"
+    xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/"
+    xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+    xmlns:xsd1="http://www.itorizaba.com/ServiciosRestaurante.xsd1">
+    <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Created using Cape Clear Studio SOA Editor - http://www.capeclear.com</wsdl:documentation>
+    <wsdl:types>
+        <xsd:schema
+            targetNamespace="http://www.itorizaba.com/ServiciosRestaurante.xsd1"
+            xmlns:SOAP-ENC="http://schemas.xmlsoap.org/soap/encoding/"
+            xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+            xmlns:xsd1="http://www.itorizaba.com/ServiciosRestaurante.xsd1">
+            <xsd:complexType name="Menu">
+                <xsd:sequence>
+                    <xsd:element maxOccurs="1" minOccurs="0" name="id" type="xsd:int"/>
+                    <xsd:element maxOccurs="1" minOccurs="0" name="platillo" type="xsd:string"/>
+                    <xsd:element maxOccurs="1" minOccurs="0" name="ingredientes" type="xsd:string"/>
+                    <xsd:element maxOccurs="1" minOccurs="0" name="precio" type="xsd:float"/>
+                </xsd:sequence>
+            </xsd:complexType>
+            <xsd:complexType name="ListaMenu">
+                <xsd:sequence>
+                    <xsd:element maxOccurs="unbounded" minOccurs="0" name="item" type="xsd1:Menu"/>
+                </xsd:sequence>
+            </xsd:complexType>
+            <xsd:complexType name="Restaurante">
+                <xsd:sequence>
+                    <xsd:element maxOccurs="1" minOccurs="0" name="id" type="xsd:int"/>
+                    <xsd:element maxOccurs="1" minOccurs="0" name="nombre" type="xsd:string"/>
+                    <xsd:element maxOccurs="1" minOccurs="0" name="direccion" type="xsd:string"/>
+                    <xsd:element maxOccurs="1" minOccurs="0" name="descripcion" type="xsd:string"/>
+                    <xsd:element maxOccurs="1" minOccurs="0" name="menu" type="xsd1:ListaMenu"/>
+                </xsd:sequence>
+            </xsd:complexType>
+            <xsd:complexType name="ListaRestaurante">
+                <xsd:sequence>
+                    <xsd:element
+                        maxOccurs="unbounded"
+                        minOccurs="0"
+                        name="item"
+                        type="xsd1:Restaurante"/>
+                </xsd:sequence>
+            </xsd:complexType>
+            <xsd:complexType name="Error">
+                <xsd:sequence>
+                    <xsd:element maxOccurs="1" minOccurs="0" name="mensaje" type="xsd:string"/>
+                    <xsd:element maxOccurs="1" minOccurs="0" name="fallo" type="xsd:boolean"/>
+                </xsd:sequence>
+            </xsd:complexType>
+        </xsd:schema>
+    </wsdl:types>
+    <wsdl:message name="GetRestaurantesRequest">
+        <wsdl:part name="ciudad" type="xsd:string"/>
+    </wsdl:message>
+    <wsdl:message name="GetRestaurantesResponse">
+        <wsdl:part name="restaurantes" type="xsd1:ListaRestaurante"/>
+        <wsdl:part name="error" type="xsd1:Error"/>
+    </wsdl:message>
+    <wsdl:portType name="ServiciosRestaurantePortType">
+        <wsdl:operation name="GetRestaurantes">
+            <wsdl:input message="tns:GetRestaurantesRequest"/>
+            <wsdl:output message="tns:GetRestaurantesResponse"/>
+        </wsdl:operation>
+    </wsdl:portType>
+    <wsdl:binding
+        name="ServiciosRestauranteBinding"
+        type="tns:ServiciosRestaurantePortType">
+        <soap:binding style="rpc" transport="http://schemas.xmlsoap.org/soap/http"/>
+        <wsdl:operation name="GetRestaurantes">
+            <soap:operation
+                soapAction="capeconnect:ServiciosRestaurante:ServiciosRestaurantePortType#GetRestaurantes"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+    </wsdl:binding>
+    <wsdl:service name="ServiciosRestaurante">
+        <wsdl:port
+            binding="tns:ServiciosRestauranteBinding"
+            name="ServiciosRestaurantePort">
+            <soap:address location="http://localhost:8000/ccx/ServiciosRestaurante"/>
+        </wsdl:port>
+    </wsdl:service>
+</wsdl:definitions>
